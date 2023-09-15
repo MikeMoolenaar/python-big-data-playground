@@ -46,6 +46,11 @@ print('Very rare bows:')
 for index, row in dfVeryRare[dfVeryRare['type'] == 'Bow'].iterrows():
     print(f'{row["weapon_name"]} with base attack of {row["base_atk"]}')
 
+# Execute function when value is defined
+for index, row in dfVeryRare.iterrows():
+    if pd.notna(row["weapon_name"]):
+        print("weapon_name is defined")
+
 # Create a new computed column
 def calculate(x):
     return round((x["max_atk"] - x["base_atk"]) / x["max_atk"] * 100, 2)
