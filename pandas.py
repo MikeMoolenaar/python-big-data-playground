@@ -33,10 +33,12 @@ dfVeryRareBow = df[(df['rarity'] == '5 Stars') & (df['type'] == 'Bow')]
 # Also works with query (more readable imo)
 dfVeryRareBow = df.query('rarity == "5 Stars" and type == "Bow"')
 
-
 # Filter by contains (case-insensitive) and not contains
 dfSkywardWeapons = df[df['weapon_name'].str.contains('skyward', case=False)]
 dfNotSkywardWeapons = df[~df['weapon_name'].str.contains('skyward', case=False)]
+
+# Filter where field is nan / not defined
+dfWeaponNotDefined = df[df["weapon_name"].isna()]
 
 # Only get row with distinct names (remove duplicates)
 dfDistinct = df.drop_duplicates(subset=['weapon_name'])
